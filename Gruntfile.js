@@ -113,6 +113,17 @@ module.exports = function(grunt) {
 			]
 		},
 
+    buildcontrol: {
+      dist: {
+        options: {
+          remote: 'git@github.com:amitaibu/presentation-hedley.git',
+          branch: 'gh-pages',
+          commit: true,
+          push: true
+        }
+      }
+    },
+
 		watch: {
             options: {
                 livereload: true
@@ -170,5 +181,10 @@ module.exports = function(grunt) {
 
 	// Run tests
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
+
+  grunt.registerTask('deploy', [
+    'default',
+    'buildcontrol'
+  ]);
 
 };
